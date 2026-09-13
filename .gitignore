@@ -68,3 +68,6 @@ logs/
 # local secrets
 .env
 
+.agents
+.specify
+

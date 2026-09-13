@@ -1,44 +1,17 @@
 <!--
-Sync Impact Report (2.0.1, 2026-09-03, PATCH)
-- 025-pluggable-storage：§技术栈持久化行更新为「SQLite（默认）/ PostgreSQL（部署选项）+ Flyway 迁移目录」；
-  原则 V 措辞「写入 SQLite」改为存储中立的「写入持久化存储」（语义不变——原则 VIII 本就预留 Flyway 口）。
-- Templates checked: 无需变更（plan/spec/tasks 模板不含库种假设）。
-- Runtime guidance synced: CLAUDE.md（技术栈表 + 陷阱表 + 迁移注意）、config/application.yml.example、
-  docker-compose.yml、docs/CliGuide.md。
-
 Sync Impact Report
-- Version change: 1.1.0 → 2.0.0
-- Bump rationale: MAJOR — 原则 IV 从「禁止跨 Agent 共享 Skill」重定义为「公共 Skill 实体库 +
-  Agent 本地相对软连接绑定 + 分层渐进式披露」，并移除 AGENT.md frontmatter skills 引用这一
-  旧绑定方式；原则 VI 同步新增软连接真实路径安全门禁。
-- Principles defined (8):
-    I.   自实现 ReAct 循环 (NON-NEGOTIABLE)
-    II.  Spring AI 仅做协议转换与 Schema 生成 (NON-NEGOTIABLE)
-    III. Provider 显式映射
-    IV.  一个目录 = 一个 Agent；Skill 以本地软连接绑定并渐进披露
-    V.   审计 Day One 落库 (NON-NEGOTIABLE)
-    VI.  安全是地基：强制沙箱与真实路径校验，不用 SecurityManager (NON-NEGOTIABLE)
-    VII. 同步执行 + 虚拟线程，不引入异步编程模型
-    VIII.目录配置即 Agent，实例无状态、状态外置
-- Modified principles:
-    IV.  禁止共享 Skill → 公共实体库 + Agent 本地软连接绑定 + 元数据常驻/正文按需
-    VI.  路径白名单 → 软连接感知的真实路径白名单
-    VIII.YAML Profile 定义 Agent → Agent 目录（frontmatter + 本地 Skill 绑定）定义 Agent
-- Added sections: none
-- Removed sections: none
-- Templates checked:
-    ✅ .specify/templates/plan-template.md (Constitution Check gate is dynamic; no edit needed)
-    ✅ .specify/templates/spec-template.md (现有安全/边界 Edge Cases 可承载软连接约束)
-    ✅ .specify/templates/tasks-template.md (已有 Tests + Security hardening 阶段，无需改模板)
-    ✅ .specify/templates/constitution-template.md (通用模板，无项目语义)
-    ✅ .specify/templates/commands/ (目录不存在，无命令模板待同步)
-- Runtime guidance requiring sync in this amendment:
-    ✅ CLAUDE.md
-    ✅ README.md
-    ✅ docs/DemandAnalysis.md
-    ✅ docs/TechnicalSolution.md
-    ⚠ AGENTS.md（未纳入当前 Git worktree；外部工作区指南需由维护者同步）
-- Follow-up items: none（本特性的 spec/plan/tasks、实现与端到端验收已同步完成）。
+- Version change: 2.0.1 → 2.0.1 (no semantic changes)
+- Modified principles: none; existing eight principles remain authoritative.
+- Added sections: none.
+- Removed sections: none.
+- Templates requiring updates:
+  ✅ .specify/templates/plan-template.md (dynamic Constitution Check gate remains compatible)
+  ✅ .specify/templates/spec-template.md (requirements and edge cases cover constitution constraints)
+  ✅ .specify/templates/tasks-template.md (foundational, testing, security, and documentation tasks remain compatible)
+  ✅ .specify/templates/constitution-template.md (generic template; no project-specific change required)
+- Runtime guidance checked: ✅ README.md; ✅ .agents/skills/speckit-constitution/SKILL.md;
+  ✅ .claude/skills/speckit-constitution/SKILL.md.
+- Follow-up TODOs: none. Ratification and amendment dates remain unchanged because no amendment was made.
 -->
 
 # OryxOS Constitution
